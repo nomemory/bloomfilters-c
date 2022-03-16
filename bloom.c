@@ -38,7 +38,7 @@ bloom_filter *bloom_filter_new(size_t size, size_t num_functions, ...) {
         exit(EXIT_FAILURE);    
     }
     va_start(argp, num_functions);
-    for(int i = 0; i < num_functions; i++) {
+    for(unsigned i = 0; i < num_functions; i++) {
         filter->hash_functions[i] = va_arg(argp, hash32_func);
     }
     va_end(argp);
@@ -73,7 +73,7 @@ void bloom_filter_free(bloom_filter *filter) {
  * @param length The length of the element (data is read using uint8_t)
  */
 void bloom_filter_put(bloom_filter *filter, const void *data, size_t length){
-    for(int i = 0; i < filter->num_functions; i++) {
+    for(unsigned i = 0; i < filter->num_functions; i++) {
         uint32_t cur_hash = filter->hash_functions[i](data, length);
         bit_vect_set1(filter->vect, cur_hash % filter->vect->size);
         filter->num_items++;
@@ -98,7 +98,7 @@ void bloom_filter_put_str(bloom_filter *filter, const char *str) {
  * @return false 
  */
 bool bloom_filter_test(bloom_filter *filter, const void *data, size_t lentgth) {
-    for(int i = 0; i < filter->num_functions; i++) {
+    for(unsigned i = 0; i < filter->num_functions; i++) {
         uint32_t cur_hash = filter->hash_functions[i](data, lentgth);
         if (!bit_vect_get(filter->vect, cur_hash % filter->vect->size)) {
             return false;

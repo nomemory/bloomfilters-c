@@ -10,3 +10,4 @@ Compiling and running the code:
 gcc -Wall -std=c99 -pedantic main.c bloom.c bitutil.c hashf.c && ./a.out
 ```
 
+You can read more about the code and its technical aspects on this [blog post](https://www.andreinc.net/2022/03/01/on-implementing-bloom-filters-in-c)

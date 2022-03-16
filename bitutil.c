@@ -22,9 +22,9 @@ bit_vect *bit_vect_new(size_t num_bits) {
     }
     size_t mem_size = num_bits / BITS_IN_TYPE(uint32_t);
     if (!(num_bits%BITS_IN_TYPE(u_int32_t))) {
-        memSize++;
+        mem_size++;
     }
-    vect->mem = malloc(memSize);
+    vect->mem = calloc(0, mem_size);
     if (NULL==vect->mem) {
         fprintf(stderr, "Out of memory.\n");
         exit(EXIT_FAILURE);

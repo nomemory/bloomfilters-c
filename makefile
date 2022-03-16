@@ -7,5 +7,5 @@ CFLAGS = -Wall -Wextra -Werror
 OBJECTS = bitutil.o bloom.o hashf.o
 
 bloom: $(OBJECTS)
-	$(CC) $(CFLAGS) $(OBJECTS) $@.c -o $@
+	$(CC) $(CFLAGS) $(OBJECTS) main.c -o main.out
 

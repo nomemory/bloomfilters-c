@@ -21,7 +21,7 @@ bit_vect *bit_vect_new(size_t num_bits) {
         exit(EXIT_FAILURE);
     }
     size_t mem_size = num_bits / BITS_IN_TYPE(uint32_t);
-    if (!(num_bits%BITS_IN_TYPE(u_int32_t))) {
+    if (!(num_bits%BITS_IN_TYPE(uint32_t))) {
         mem_size++;
     }
     vect->mem = calloc(mem_size, sizeof(*(vect->mem)));
